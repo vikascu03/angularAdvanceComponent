@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { BlogPost } from '../blog-post';
+import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.component';
 
 @Component({
   selector: 'app-blog-list',
@@ -9,6 +10,7 @@ import { BlogPost } from '../blog-post';
 export class BlogListComponent implements OnInit {
   blogPosts:BlogPost [][];
   currentPage:number;
+  @ViewChildren('tile') blogPostTileComponents: QueryList<BlogPostTileComponent>;
   
 
   constructor() { }
@@ -19,15 +21,15 @@ export class BlogListComponent implements OnInit {
       [
         {
           title : 'post1',
-          summary:'hererxkskfsldkfjs'
+          summary:'hererxkskfssdfsdfdsfdsfdsfsdfcvxcvdfldkfjs'
         },
         {
           title : 'post2',
-          summary:'hererxksdfsskfsldkfjs'
+          summary:'hererxksdfssdfdfnskldfsdfnsdfmdsf cx.v dfgfkfsldkfjs'
         },
         {
           title : 'post3',
-          summary:'sdfsfssfesfjpotietkertkire[ykrdfsd'
+          summary:'sdfsfssfesfjpotietkvxcvcvxcvxcvxvvertkire[ykrdfsd'
         }
         
       ],
@@ -66,6 +68,10 @@ export class BlogListComponent implements OnInit {
   updatePage(newPage){
     console.log("new page clicked ");
     this.currentPage=newPage;
+  }
+  expandAll(){
+    this.blogPostTileComponents.forEach(x=>x.showFullSummary());
+
   }
 
 }
